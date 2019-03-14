@@ -1,0 +1,50 @@
+def imageget():
+    print('teste')
+    import cv2
+    import numpy as np
+    from matplotlib import pyplot as plt
+
+    path = 'Espinha.png'
+    frame = cv2.imread(path)
+    print('teste')
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    print (frame)
+
+    limiar = 127
+
+    # define range of white color in HSV
+    # change it according to your need !
+    lower_white = np.array([0, 0, 0], dtype=np.uint8)
+    upper_white = np.array([limiar, limiar, limiar], dtype=np.uint8)
+
+    # Threshold the HSV image to get only white colors
+    mask = cv2.inRange(hsv, lower_white, upper_white)
+    # Bitwise-AND mask and original image
+    res = cv2.bitwise_and(frame, frame, mask=mask)
+
+    titles = ['Imagem Original', 'Mascara', 'Resultado']
+    images = [frame, mask, res]
+
+    for i in xrange(3):
+        plt.subplot(1, 3, i + 1), plt.imshow(images[i], 'gray')
+        plt.title(titles[i])
+        plt.xticks([]), plt.yticks([])
+
+
+    plt.show()
+
+# C=1
+# path=
+# im1=imread(path)
+# im2=round(double(rgb2gray(im1)));
+# [lin,col]=size(im2)
+# for y=1 in range (lin):
+#    r=im2(y,x)/255
+#    im3(y,x) = c*r^b;
+# %maximo = max(max(im3));
+# %im3 = (im3/maximo);
+
+# subplot(1,2,1)
+# imshow(im2/255);
+# subplot(1,2,2)
+# imshow(im3);
