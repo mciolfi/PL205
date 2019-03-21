@@ -1,0 +1,31 @@
+def Rangeseek():
+    # Import functions to read images and numpy and plot
+    import cv2
+    import numpy as np
+    from math import exp
+    from matplotlib import pyplot as plt
+
+    # Assign image and transform to gray
+    #file = 'Espinha.png'
+    file = 'lenna.png'
+    img1 = cv2.imread(file)
+    img2 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+    img3 = cv2.GaussianBlur(img2, (5, 5), 0)
+    print ('imagem = ',img2[100,100], len(img2[0]))
+
+    #Define parameter for sigmoid function
+    q = 0.5
+    beta = 60 # Gray scale to seek
+    alfa = 10 # Desvio padrão
+    for y in range(len(img1)):
+        for x in range (len(img1[0])):
+            I = img2[x,y]
+            d = - abs(I - beta / alfa)
+            e = (exp(-d))
+            expq = (255-(255(1/1+e)))
+
+#    for y in range (len(img1)):
+#        for x in range (len(img1[0])):
+#            I = double(img1[y][x]
+            #img2 = qsigmoid
+Rangeseek()
