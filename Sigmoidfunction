@@ -6,9 +6,9 @@ def Rangeseek():
 
     # Assign image and transform to grey
     #file = 'Espinha.png'
-    #file = 'lenna.png'
+    file = 'lenna.png'
     #file = 'Lig_Cooper.jpg'
-    file = 'mama1.jpg'
+    #file = 'mama1.jpg'
     img1 = cv2.imread(file)
     img2 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
     img3 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
@@ -23,14 +23,14 @@ def Rangeseek():
         for x in range(len(img1[0])):               # Count until max column
             I = img2[y, x]                          # Read pixel intensity of each point
             den = 1 + exp(-((I - beta) / alpha))    # Denominator of sigmoid function
-            img3[y, x] = 255 * q / den                  # Numerator of sigmoid function
+            img3[y, x] = 255 * q / den              # Numerator of sigmoid function
 
     # Make the greyscale images have three channels in order to concatenate
     img2_3_channel = cv2.cvtColor(img2, cv2.COLOR_GRAY2BGR)
     img3_3_channel = cv2.cvtColor(img3, cv2.COLOR_GRAY2BGR)
 
-    # Resize the images to a percent of its original size
-    siz = 0.3
+    # Resize the images to a percent of its original size in order to show in the screen
+    siz = 400/len(img1[0])
     img1 = cv2.resize(img1, (0, 0), None, siz, siz)
     img2 = cv2.resize(img2_3_channel, (0, 0), None, siz, siz)
     img3 = cv2.resize(img3_3_channel, (0, 0), None, siz, siz)
