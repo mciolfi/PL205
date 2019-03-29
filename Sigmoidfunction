@@ -6,7 +6,8 @@ def Rangeseek():
 
     # Assign image and transform to grey
     #file = 'Espinha.png'
-    file = 'lenna.png'
+    #file = 'lenna.png'
+    file = 'lena2.jpg'
     #file = 'Lig_Cooper.jpg'
     #file = 'mama1.jpg'
     img1 = cv2.imread(file)
